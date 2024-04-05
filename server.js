@@ -2,10 +2,11 @@ const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const { engine } = require('express-handlebars');
-const routes = require('./controllers/routes');
 const sequelize = require('./config/connection');
-const helpers = require('./utils/helpers');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
+
+// Assuming your routes are correctly set up in these files
+const routes = require('./controllers/routes'); // Make sure this path is correct
 const postRoutes = require('./controllers/postRoutes');
 const commentRoutes = require('./controllers/commentRoutes');
 
@@ -24,9 +25,9 @@ const sess = {
 
 app.use(session(sess));
 
-const hbs = exphbs.create({ helpers });
-
-app.engine('handlebars', engine());
+app.engine('handlebars', engine({
+    defaultLayout: 'main'
+}));
 app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'views'));
 
@@ -34,16 +35,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-
+// Use routes
 app.use(routes);
 app.use(postRoutes);
 app.use(commentRoutes);
 
+// Sync sequelize models and then start Express app
 sequelize.sync({ force: false }).then(() => {
-    app.listen(PORT, () => console.log('Now listening'));
-}
-);
-
-app.listen(PORT, () => {
-    console.log(`App listening on port ${PORT}!`);
-}   );
+    app.listen(PORT, () => console.log(`Now listening on port ${PORT}`));
+});
