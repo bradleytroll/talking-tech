@@ -6,9 +6,9 @@ const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 // Assuming your routes are correctly set up in these files
-const routes = require('./controllers/routes'); // Make sure this path is correct
-const postRoutes = require('./controllers/postRoutes');
-const commentRoutes = require('./controllers/commentRoutes');
+const routes = require('./controllers/api/userRoutes'); // Make sure this path is correct
+const postRoutes = require('./controllers/api/postRoutes');
+const commentRoutes = require('./controllers/api/commentRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -33,7 +33,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join('public')));
 
 // Use routes
 app.use(routes);
