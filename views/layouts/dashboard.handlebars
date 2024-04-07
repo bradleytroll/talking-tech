@@ -20,6 +20,20 @@
             </ul>
         </nav>
     </header>
+    <h2>Your Dashboard</h2>
+{{#if posts.length}}
+    {{#each posts}}
+    <div>
+        <h3>{{this.title}}</h3>
+        <p>{{this.content}}</p>
+        <!-- Add Edit/Delete buttons here -->
+    </div>
+    {{/each}}
+{{else}}
+    <p>You have not posted anything yet.</p>
+{{/if}}
+<a href="/posts/new">Create a New Post</a>
+
  
     {{{body}}} 
  
@@ -32,3 +46,4 @@
 </html>
 
 <script src'/public/js/logout.js'></script>
+
