@@ -5,11 +5,11 @@
         </div>
         <div class="card-content">
             <p>{{post.body}}</p>
-            <p>Posted by {{post.user.username}} on {{post.createdAt}}</p>
+            <p>Posted by {{post.user.username}}</p>
         </div>
         <div class="card-actions">
-            <a href="/posts/{{post._id}}/edit">Edit</a>
-            <form action="/posts/{{post._id}}?_method=DELETE" method="POST">
+            <a href="/post/{{post.id}}/edit">Edit</a>
+            <form action="/post/{{post.id}}?_method=DELETE" method="POST">
                 <button type="submit">Delete</button>
             </form>
         </div>
@@ -21,11 +21,11 @@
     <div class="comment card">
         <div class="card-content">
             <p>{{this.body}}</p>
-            <p>Posted by {{this.user.username}} on {{this.createdAt}}</p>
+            <p>Posted by {{this.user.username}}</p>
         </div>
     </div>
     {{if}}
-    <form id="new-comment-form" action="/posts/{{post._id}}/comments" method="POST">
+    <form id="new-comment-form" action="/posts/{{post.id}}/comments" method="POST">
         <div>
             <label for="body">Comment:</label>
             <textarea id="body" name="body" required></textarea>
@@ -36,5 +36,5 @@
 
 </div>
 
-<script src="/public/js/comments.js"></script>
+<script src="/public/js/newPost.js"></script>
 
