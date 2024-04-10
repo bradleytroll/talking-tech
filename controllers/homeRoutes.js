@@ -8,14 +8,14 @@ router.get('/', async (req, res) => {
             include: [
                 {
                     model: User,
-                    attributes: ['name'],
+                    attributes: ['username'],
                 },
             ],
         });
 
         const posts = postData.map((post) => post.get({ plain: true }));
 
-        res.render('homepage', {
+        res.render('allPosts', {
             posts,
             loggedIn: req.session.loggedIn,
         });
@@ -30,14 +30,14 @@ router.get('/post/:id', async (req, res) => {
             include: [
                 {
                     model: User,
-                    attributes: ['name'],
+                    attributes: ['username'],
                 },
                 {
                     model: Comment,
                     attributes: ['comment', 'date_created'],
                     include: {
                         model: User,
-                        attributes: ['name'],
+                        attributes: ['username'],
                     },
                 },
             ],
@@ -45,7 +45,7 @@ router.get('/post/:id', async (req, res) => {
 
         const post = postData.get({ plain: true });
 
-        res.render('post', {
+        res.render('onePost', {
             ...post,
             loggedIn: req.session.loggedIn,
         });

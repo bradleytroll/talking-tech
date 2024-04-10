@@ -1,4 +1,4 @@
-const userData = [
+[
     {
         "username": "techGeek79",
         "password": "password123"
@@ -16,6 +16,6 @@ const userData = [
         "password": "password123"
 
     }
-];  
+]
 
-module.exports = userData;
+

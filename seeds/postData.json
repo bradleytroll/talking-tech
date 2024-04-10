@@ -1,0 +1,22 @@
+[
+    {
+        "title": "My Tech Experience",
+        "post_content": "This is the body of post 1"
+
+    },
+    {
+        "title": "Coding for Dummies",
+        "post_content": "This is the body of post 2"
+
+    },
+    {
+        "title": "A Nice Cup of JavaScript",
+        "post_content": "This is the body of post 3"
+
+    },
+    {
+        "title": "I Love Coding",
+        "post_content": "This is the body of post 4"
+  
+    }
+]
