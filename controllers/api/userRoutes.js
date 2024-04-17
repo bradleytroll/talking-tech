@@ -65,13 +65,13 @@ router.post('/', (req, res) => {
 //     }
 // });
 
-router.post('/login', (req, res) => {
-    User.findOne({
+router.post('/login', async (req, res) => {
+    try {
+    const userData = await User.findOne({
         where: {
             username: req.body.username
         }
     })
-       .then((userData) => {
             if (!userData) {
                 res
                    .status(400)
@@ -91,15 +91,13 @@ router.post('/login', (req, res) => {
                 req.session.user_id = userData.id;
                 req.session.username = userData.username;
                 req.session.loggedIn = true;
-                res.json ({ user: userData, message: 'You are now logged in!' });
-            }
-            );
-        })  
-        .catch((err) => {
+                res.status(200).json ({ user: userData, message: 'You are now logged in!' });
+            });
+        } catch (err) {
             console.log(err);
             res.status(400).json(err);
+        }
         });
-});
     
 
 // router.post('/login', async (req, res) => {

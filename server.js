@@ -8,13 +8,20 @@ const exhbs = require('express-handlebars');
 
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
+const app = express();
+const PORT = process.env.PORT || 3001;
+
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+
 // Assuming your routes are correctly set up in these files
 const routes = require('./controllers/'); 
 const postRoutes = require('./controllers/api/postRoutes');
 const commentRoutes = require('./controllers/api/commentRoutes');
 
-const app = express();
-const PORT = process.env.PORT || 3001;
+
 
 const sess = {
 	secret: 'your_secret_key',
@@ -48,3 +55,4 @@ app.listen(PORT, () => {
 	console.log(`Server now listening on port ${PORT}!!`);
 	sequelize.sync({ force: false });
 });
+

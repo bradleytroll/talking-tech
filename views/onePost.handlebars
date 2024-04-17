@@ -4,7 +4,7 @@
             <h2>{{post.title}}</h2>
         </div>
         <div class="card-content">
-            <p>{{post.body}}</p>
+            <p>{{post.post_content}}</p>
             <p>Posted by {{post.user.username}}</p>
         </div>
         <div class="card-actions">
@@ -24,7 +24,8 @@
             <p>Posted by {{this.user.username}}</p>
         </div>
     </div>
-    {{if}}
+    {{/each}}
+    {{/if}}
     <form id="new-comment-form" action="/posts/{{post.id}}/comments" method="POST">
         <div>
             <label for="body">Comment:</label>
