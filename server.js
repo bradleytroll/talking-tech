@@ -18,8 +18,8 @@ app.use(express.urlencoded({ extended: true }));
 
 // Assuming your routes are correctly set up in these files
 const routes = require('./controllers/'); 
-const postRoutes = require('./controllers/api/postRoutes');
-const commentRoutes = require('./controllers/api/commentRoutes');
+// const postRoutes = require('./controllers/api/postRoutes');
+// const commentRoutes = require('./controllers/api/commentRoutes');
 
 
 

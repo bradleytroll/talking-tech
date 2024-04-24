@@ -26,7 +26,7 @@
     </div>
     {{/each}}
     {{/if}}
-    <form id="new-comment-form" action="/posts/{{post.id}}/comments" method="POST">
+    <form id="new-comment-form" action="/api/posts/{{post.id}}/comments" method="POST">
         <div>
             <label for="body">Comment:</label>
             <textarea id="body" name="body" required></textarea>
@@ -37,5 +37,5 @@
 
 </div>
 
-<script src="/public/js/newPost.js"></script>
+<script src="/js/onePost.js"></script>
 

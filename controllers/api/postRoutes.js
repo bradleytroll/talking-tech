@@ -1,47 +1,45 @@
 const express = require('express');
 const router = express.Router();
-const { Post } = require('../../models');
+const { Post, User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-router.get('/', (req, res) => {
-    Post.findAll({
-        attributes: Post.postAttributes,
-        include: [
-            {
-                model: User,
-                attributes: ['username'],
-            },
-        ],
-    })
-       .then((postData) => res.json(postData))
-       .catch((err) => {
-            console.log(err);
-            res.status(50
-    ).json(err);
-        }
-    );
-});
+// router.get('/', (req, res) => {
+//     Post.findAll({
+//         attributes: Post.postAttributes,
+//         include: [
+//             {
+//                 model: User,
+//                 attributes: ['username'],
+//             },
+//         ],
+//     })
+//        .then((postData) => res.json(postData))
+//        .catch((err) => {
+//             console.log(err);
+//             res.status(500).json(err);
+//         })
+// });
 
 
-router.get('/:id', (req, res) => {
-    Post.fineOne({
-        where: {
-            id: req.params.id,
-        },
-        attributes: Post.postAttributes,
-        include: [
-            {
-                model: User,
-                attributes: ['username'],
-            },
-        ],
-    })
-        .then((postData) => res.json(postData))
-        .catch((err) => {
-            console.log(err);
-            res.status(500).json(err);
-        });
-});
+// router.get('/:id', (req, res) => {
+//     Post.findOne({
+//         where: {
+//             id: req.params.id,
+//         },
+//         attributes: Post.postAttributes,
+//         include: [
+//             {
+//                 model: User,
+//                 attributes: ['username'],
+//             },
+//         ],
+//     })
+//         .then((postData) => res.json(postData))
+//         .catch((err) => {
+//             console.log(err);
+//             res.status(500).json(err);
+//         });
+// });
 
 
 // router.get('/', withAuth, async (req, res) => {
@@ -66,32 +64,36 @@ router.get('/:id', (req, res) => {
 //     }
 // });
 
-router.post('/', withAuth, (req, res) => {
-    Post.create({
-        ...req.body,
-        user_id: req.session.user_id,
-    })
-        .then((postData) => res.json(postData))
-        .catch((err) => {
-            console.log(err);
-            res.status(500).json(err);
-        });
-}   );
-
-
-
-// router.post('/', withAuth, async (req, res) => {
-//     try {
-//         const newPost = await Post.create({
-//             ...req.body,
-//             user_id: req.session.user_id,
+// router.post('/', withAuth, (req, res) => {
+//     Post.create({
+//         ...req.body,
+//         user_id: req.session.user_id,
+//     })
+//         .then((postData) => res.json(postData))
+//         .catch((err) => {
+//             console.log(err);
+//             res.status(500).json(err);
 //         });
+// }   );
 
-//         res.status(200).json(newPost);
-//     } catch (err) {
-//         res.status(400).json(err);
-//     }
-// });
+
+
+router.post('/', withAuth, async (req, res) => {
+    try {
+        const newPost = await Post.create({
+            ...req.body,
+            user_id: req.session.user_id,
+        });
+        res.render('allPosts', {
+            layout: 'dashboard',
+            newPost,
+        })
+        //res.status(200).json(newPost);
+    } catch (err) {
+        console.error('Failed to create post:', err);
+        res.status(400).json(err);
+    }
+});
 
 router.put('/:id', withAuth, (req, res) => {
     Post.update(req.body, {

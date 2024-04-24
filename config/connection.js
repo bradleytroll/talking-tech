@@ -17,7 +17,7 @@ module.exports = sequelize;
 // let sequelize;
 
 // if (process.env.JAWSDB_URL) {
-//   sequelize = new Sequelize(process.env.JAWSDB_URL);
+//   sequelize = new Sequelize(process.env.B_URL);
 // } else {
 //   sequelize = new Sequelize(
 //     process.env.DB_NAME,
