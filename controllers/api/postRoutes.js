@@ -3,78 +3,34 @@ const router = express.Router();
 const { Post, User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-// router.get('/', (req, res) => {
-//     Post.findAll({
-//         attributes: Post.postAttributes,
-//         include: [
-//             {
-//                 model: User,
-//                 attributes: ['username'],
-//             },
-//         ],
-//     })
-//        .then((postData) => res.json(postData))
-//        .catch((err) => {
-//             console.log(err);
-//             res.status(500).json(err);
-//         })
-// });
 
 
-// router.get('/:id', (req, res) => {
-//     Post.findOne({
-//         where: {
-//             id: req.params.id,
-//         },
-//         attributes: Post.postAttributes,
-//         include: [
-//             {
-//                 model: User,
-//                 attributes: ['username'],
-//             },
-//         ],
-//     })
-//         .then((postData) => res.json(postData))
-//         .catch((err) => {
-//             console.log(err);
-//             res.status(500).json(err);
-//         });
-// });
+router.get('/:id', async (req, res) => {
+    try {
+        const postData = await Post.findOne({
+            where: { id: req.params.id },
+            include: [
+                {
+                    model: User,
+                    attributes: ['username'],
+                },
+                // Include any other relevant associations here
+            ],
+        });
 
+        if (postData) {
+            // Converting the sequelize object into a plain object
+            const post = postData.get({ plain: true });
+            res.render('onePost', { post });  // Assuming 'onePost.handlebars' is your view file
+        } else {
+            res.status(404).send('Post not found');
+        }
+    } catch (err) {
+        console.error('Error fetching post:', err);
+        res.status(500).send(err.toString());
+    }
+});
 
-// router.get('/', withAuth, async (req, res) => {
-//     try {
-//         const postData = await Post.findAll({
-//             include: [
-//                 {
-//                     model: User,
-//                     attributes: ['username'],
-//                 },
-//             ],
-//         });
-
-//         const posts = postData.map((post) => post.get({ plain: true }));
-
-//         res.render('home', {
-//             posts,
-//             loggedIn: req.session.loggedIn // Pass session info to view
-//         });
-//     } catch (err) {
-//         res.status(500).json(err);
-//     }
-// });
-
-// router.post('/', withAuth, (req, res) => {
-//     Post.create({
-//         ...req.body,
-//         user_id: req.session.user_id,
-//     })
-//         .then((postData) => res.json(postData))
-//         .catch((err) => {
-//             console.log(err);
-//             res.status(500).json(err);
-//         });
-// }   );
 
 
 
@@ -160,3 +116,56 @@ router.delete('/:id', withAuth, (req, res) => {
 // });
 
 module.exports = router;
+
+// router.get('/', (req, res) => {
+//     Post.findAll({
+//         attributes: Post.postAttributes,
+//         include: [
+//             {
+//                 model: User,
+//                 attributes: ['username'],
+//             },
+//         ],
+//     })
+//        .then((postData) => res.json(postData))
+//        .catch((err) => {
+//             console.log(err);
+//             res.status(500).json(err);
+//         })
+// });
+
+
+
+// router.get('/', withAuth, async (req, res) => {
+//     try {
+//         const postData = await Post.findAll({
+//             include: [
+//                 {
+//                     model: User,
+//                     attributes: ['username'],
+//                 },
+//             ],
+//         });
+
+//         const posts = postData.map((post) => post.get({ plain: true }));
+
+//         res.render('home', {
+//             posts,
+//             loggedIn: req.session.loggedIn // Pass session info to view
+//         });
+//     } catch (err) {
+//         res.status(500).json(err);
+//     }
+// });
+
+// router.post('/', withAuth, (req, res) => {
+//     Post.create({
+//         ...req.body,
+//         user_id: req.session.user_id,
+//     })
+//         .then((postData) => res.json(postData))
+//         .catch((err) => {
+//             console.log(err);
+//             res.status(500).json(err);
+//         });
+// }   );

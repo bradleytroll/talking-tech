@@ -5,7 +5,8 @@
         <h2>{{this.title}}</h2>
         <p>{{this.content}}</p>
         <p>Posted by {{this.user.username}} on {{this.createdAt}}</p>
-        <a href="/api/posts/{{this._id}}">View Post</a>
+        <a href="/api/posts/{{this.id}}">View Post</a>
     </div>
     {{/each}}
 </div>
+
