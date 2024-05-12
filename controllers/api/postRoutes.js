@@ -84,18 +84,25 @@ router.put('/:id', withAuth, (req, res) => {
 //     }
 // });
 
-router.delete('/:id', withAuth, (req, res) => {
+router.delete('/:id', (req, res) => {
     Post.destroy({
         where: {
             id: req.params.id,
         },
     })
-       .then((postData) => res.json(postData))
-       .catch((err) => {
-            console.log(err);
-            res.status(500).json(err);
-        });
+    .then(deleted => {
+        if (deleted) {
+            res.send('Post deleted');
+        } else {
+            res.status(404).send('Post not found');
+        }
+    })
+    .catch(err => {
+        console.error('Error deleting post:', err);
+        res.status(500).json(err);
+    });
 });
+
 
 // router.delete('/:id', withAuth, async (req, res) => {
 //     try {

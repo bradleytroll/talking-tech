@@ -37,7 +37,7 @@ router.get('/edit/:id', withAuth, async (req, res) => {
         if (postData) {
             const post = postData.get({ plain: true });
 
-            res.render('editPost', {
+            res.render('onePost', {
                 layout: 'dashboard',
                 post,
             });
