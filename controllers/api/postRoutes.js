@@ -21,7 +21,7 @@ router.get('/:id', async (req, res) => {
         if (postData) {
             // Converting the sequelize object into a plain object
             const post = postData.get({ plain: true });
-            res.render('onePost', { post });  // Assuming 'onePost.handlebars' is your view file
+            res.render('onePost', { post });  
         } else {
             res.status(404).send('Post not found');
         }
@@ -51,18 +51,18 @@ router.post('/', withAuth, async (req, res) => {
     }
 });
 
-router.put('/:id', withAuth, (req, res) => {
-    Post.update(req.body, {
-        where: {
-            id: req.params.id,
-        },
-    })
-       .then((postData) => res.json(postData))
-       .catch((err) => {
-            console.log(err);
-            res.status(500).json(err);
-        });
-});
+// router.put('/:id', withAuth, (req, res) => {
+//     Post.update(req.body, {
+//         where: {
+//             id: req.params.id,
+//         },
+//     })
+//        .then((postData) => res.json(postData))
+//        .catch((err) => {
+//             console.log(err);
+//             res.status(500).json(err);
+//         });
+// });
 
   
 
@@ -84,7 +84,7 @@ router.put('/:id', withAuth, (req, res) => {
 //     }
 // });
 
-router.delete('/:id', (req, res) => {
+router.post('/delete/:id', (req, res) => {
     Post.destroy({
         where: {
             id: req.params.id,
@@ -92,7 +92,7 @@ router.delete('/:id', (req, res) => {
     })
     .then(deleted => {
         if (deleted) {
-            res.send('Post deleted');
+            res.send('Post deleted successfully.');
         } else {
             res.status(404).send('Post not found');
         }
@@ -102,6 +102,7 @@ router.delete('/:id', (req, res) => {
         res.status(500).json(err);
     });
 });
+
 
 
 // router.delete('/:id', withAuth, async (req, res) => {

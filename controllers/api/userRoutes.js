@@ -159,25 +159,25 @@ router.post('/logout', (req, res) => {
 // module.exports = router;
 
 
-// router.put('/:id', (req, res) => {
-//     User.update(req.body, {
-//         individualHooks: true,
-//         where: {
-//             id: req.params.id,
-//         },
-//     })
-//        .then((userData) => {
-//             if (!userData) {
-//                 res.status(404).json({ message: 'No user found with this id' });
-//                 return;
-//             }
-//             res.json(userData);
-//         })
-//        .catch((err) => {
-//             console.log(err);
-//             res.status(500).json(err);
-//         });
-// }   );
+router.put('/:id', (req, res) => {
+    User.update(req.body, {
+        individualHooks: true,
+        where: {
+            id: req.params.id,
+        },
+    })
+       .then((userData) => {
+            if (!userData) {
+                res.status(404).json({ message: 'No user found with this id' });
+                return;
+            }
+            res.json(userData);
+        })
+       .catch((err) => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+}   );
 
 // router.delete('/id', (req, res) => {
 //     User.destroy({

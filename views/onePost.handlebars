@@ -10,7 +10,9 @@
         <div class="card-actions">
             <a href="/post/{{post.id}}/edit">Edit</a>
             <form action="/post/{{post.id}}?_method=DELETE" method="POST">
-                <button type="submit">Delete</button>
+                <button type="button" class="delete-post-button" data-post-id="{{post.id}}">Delete</button>
+
+
             </form>
         </div>
     </article>
