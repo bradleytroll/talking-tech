@@ -8,8 +8,8 @@
             <p>Posted by {{post.user.username}}</p>
         </div>
         <div class="card-actions">
-            <a href="/post/{{post.id}}/edit">Edit</a>
-            <form action="/post/{{post.id}}?_method=DELETE" method="POST">
+            <a href="/api/posts/{{post.id}}/edit">Edit</a>
+            <form action="/api/posts/{{post.id}}?_method=DELETE" method="POST">
                 <button type="button" class="delete-post-button" data-post-id="{{post.id}}">Delete</button>
 
 

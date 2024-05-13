@@ -30,7 +30,7 @@ router.get('/new', withAuth, (req, res) => {
 
 
 // Route below not working
-router.get('/edit/:id', withAuth, async (req, res) => {
+router.get('/api/posts/:id/edit', withAuth, async (req, res) => {
     try {
         const postData = await Post.findByPk(req.params.id);
 

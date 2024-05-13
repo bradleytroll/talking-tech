@@ -51,6 +51,26 @@ router.post('/', withAuth, async (req, res) => {
     }
 });
 
+// Route to serve the edit page for a post
+router.get('/:id/edit', async (req, res) => {
+    try {
+        const postData = await Post.findByPk(req.params.id, {
+            include: [{ model: User, attributes: ['username'] }]
+        });
+        if (!postData) {
+            res.status(404).send('Post not found');
+            return;
+        }
+
+        const post = postData.get({ plain: true });
+        res.render('editPost', { post }); 
+    } catch (err) {
+        console.error('Error fetching post for edit:', err);
+        res.status(500).send(err.toString());
+    }
+});
+
+
 // router.put('/:id', withAuth, (req, res) => {
 //     Post.update(req.body, {
 //         where: {
@@ -177,3 +197,4 @@ module.exports = router;
 //             res.status(500).json(err);
 //         });
 // }   );
+
