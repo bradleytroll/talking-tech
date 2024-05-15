@@ -33,7 +33,7 @@ router.get('/new', withAuth, (req, res) => {
 router.get('/api/posts/:id/edit', withAuth, async (req, res) => {
     try {
         const postData = await Post.findByPk(req.params.id);
-
+        console.log(postData)
         if (postData) {
             const post = postData.get({ plain: true });
 

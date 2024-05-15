@@ -14,12 +14,12 @@ router.get('/:id', async (req, res) => {
                     model: User,
                     attributes: ['username'],
                 },
-                // Include any other relevant associations here
+               
             ],
         });
 
         if (postData) {
-            // Converting the sequelize object into a plain object
+          
             const post = postData.get({ plain: true });
             res.render('onePost', { post });  
         } else {
@@ -67,6 +67,30 @@ router.get('/:id/edit', async (req, res) => {
     } catch (err) {
         console.error('Error fetching post for edit:', err);
         res.status(500).send(err.toString());
+    }
+});
+
+// postRoutes.js
+router.post('/update/:id', async (req, res) => {
+    console.log("Received data for update:", req.body);
+    console.log("Post ID to update:", req.params.id)
+    try {
+        const { title, content } = req.body;
+        const updatedPost = await Post.update(
+            { title, content },
+            { where: { id: req.params.id } }
+        );
+        console.log("Update result:", updatedPost);
+        if (updatedPost[0] > 0) {
+            console.log("Post updated successfully.");
+            res.redirect('/dashboard'); 
+        } else {
+            console.log("No post found with the given ID.");
+            res.status(404).send('Post not found');
+        }
+    } catch (err) {
+        console.error('Error updating post:', err);
+        res.status(500).send('Error updating post');
     }
 });
 
