@@ -40,11 +40,8 @@ router.post('/', withAuth, async (req, res) => {
             ...req.body,
             user_id: req.session.user_id,
         });
-        res.render('allPosts', {
-            layout: 'dashboard',
-            newPost,
-        })
-        //res.status(200).json(newPost);
+       
+        res.status(200).json(newPost);
     } catch (err) {
         console.error('Failed to create post:', err);
         res.status(400).json(err);
@@ -75,7 +72,7 @@ router.post('/update/:id', async (req, res) => {
     console.log("Received data for update:", req.body);
     console.log("Post ID to update:", req.params.id)
     try {
-        const { title, content } = req.body;
+        const { title, post_content: content } = req.body;
         const updatedPost = await Post.update(
             { title, content },
             { where: { id: req.params.id } }
