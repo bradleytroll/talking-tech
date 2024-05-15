@@ -74,7 +74,7 @@ router.post('/update/:id', async (req, res) => {
     try {
         const { title, post_content: content } = req.body;
         const updatedPost = await Post.update(
-            { title, content },
+            { title, post_content: content },
             { where: { id: req.params.id } }
         );
         console.log("Update result:", updatedPost);
