@@ -1,5 +1,31 @@
 <div class="post">
     <h2>{{title}}</h2>
-    <p>By {{user.username}} on {{createdAt}}</p>
+    <p>By {{user.username}} on {{format_date createdAt}}</p>
     <p>{{content}}</p>
+
+    <h3>Comments</h3>
+    {{#each comments}}
+        <div class="comment">
+            <p>{{comment_text}}</p>
+            <p>By {{user.username}} on {{format_date createdAt}}</p>
+            {{#if ../logged_in}}
+                {{#if (eq user_id ../logged_in_user_id)}}
+                    <button class="edit-comment" data-id="{{id}}">Edit</button>
+                    <button class="delete-comment" data-id="{{id}}">Delete</button>
+                {{/if}}
+            {{/if}}
+        </div>
+    {{/each}}
+
+    <p>Logged in: {{logged_in}}</p>
+    <p>Logged in user ID: {{logged_in_user_id}}</p>
+
+    {{#if logged_in}}
+        <form class="new-comment-form" data-post-id="{{id}}">
+            <textarea name="comment_text" placeholder="Add a comment" required></textarea>
+            <button type="submit">Post Comment</button>
+        </form>
+    {{else}}
+        <p><a href="/login">Log in to add a comment</a></p>
+    {{/if}}
 </div>

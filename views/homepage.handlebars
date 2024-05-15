@@ -1,22 +1,6 @@
+<p>Logged in: {{logged_in}}</p>
+<p>User ID: {{logged_in_user_id}}</p>
+
 {{#each posts}}
-    <div class="post">
-        <h2>{{title}}</h2>
-        <p>By {{user.username}} on {{format_date createdAt}}</p>
-        <p>{{content}}</p>
-    </div>
+    {{> post}}
 {{/each}}
-
-{{!-- {{#each posts}}
-
-{{title}}
-By {{user.username}} on {{createdAt}}
-{{content}}
-
-{{/each}}
-**views/login.handlebars**
-```handlebars
-<form id="login-form">
-    <input type="text" name="username" placeholder="Username" required>
-    <input type="password" name="password" placeholder="Password" required>
-    <button type="submit">Login</button>
-</form> --}}

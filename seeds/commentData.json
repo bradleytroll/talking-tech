@@ -1,11 +1,22 @@
 [
     {
-        "comment_text": "This is a comment on the first post."
+        "comment_text": "This is a comment on the first post.",
+        "user_id": 1,
+        "post_id": 1
     },
     {
-        "comment_text": "This is another comment on the first post."
+        "comment_text": "This is another comment on the first post.",
+        "user_id": 2,
+        "post_id": 1
     },
     {
-        "comment_text": "This is a comment on the second post."
+        "comment_text": "This is a comment on the second post.",
+        "user_id": 1,
+        "post_id": 2
+    },
+    {
+        "comment_text": "This is a comment on the third post.",
+        "user_id": 3,
+        "post_id": 3
     }
 ]
