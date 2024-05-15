@@ -23,11 +23,16 @@ router.get('/', async (req, res) => {
 
         const posts = postData.map((post) => post.get({ plain: true }));
 
-        res.render('homepage', {
+        const context = {
             posts,
             logged_in: req.session.logged_in,
             logged_in_user_id: req.session.user_id
-        });
+        };
+
+        console.log('Data context being passed to homepage:', context);
+        console.log('Session information:', req.session);
+
+        res.render('homepage', context);
     } catch (err) {
         res.status(500).json(err);
     }

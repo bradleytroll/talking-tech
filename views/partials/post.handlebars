@@ -4,6 +4,7 @@
     <p>{{content}}</p>
 
     <h3>Comments</h3>
+    <p>hey</p>
     {{#each comments}}
         <div class="comment">
             <p>{{comment_text}}</p>
@@ -20,12 +21,14 @@
     <p>Logged in: {{logged_in}}</p>
     <p>Logged in user ID: {{logged_in_user_id}}</p>
 
-    {{#if logged_in}}
+    {{#if ../logged_in}}
+        <p>Debug: User is logged in</p>
         <form class="new-comment-form" data-post-id="{{id}}">
             <textarea name="comment_text" placeholder="Add a comment" required></textarea>
             <button type="submit">Post Comment</button>
         </form>
     {{else}}
+        <p>Debug: User is not logged in</p>
         <p><a href="/login">Log in to add a comment</a></p>
     {{/if}}
 </div>
