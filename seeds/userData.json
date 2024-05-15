@@ -1,21 +1,14 @@
 [
     {
-        "username": "techGeek79",
+        "username": "john_doe",
         "password": "password123"
     },
     {
-        "username": "talkJavaToMe",
+        "username": "jane_doe",
         "password": "password123"
     },
     {
-        "username": "codeSlayer98",
+        "username": "developer01",
         "password": "password123"
-    },
-    {
-        "username": "DaCodeAh_Fanning"   ,
-        "password": "password123"
-
     }
 ]
-
-

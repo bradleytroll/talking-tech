@@ -1,24 +1,49 @@
 const signupFormHandler = async (event) => {
     event.preventDefault();
 
-    const username = document.querySelector('#username').value.trim();
-    const password = document.querySelector('#password').value.trim();
+    const username = document.querySelector('#username-signup').value.trim();
+    const password = document.querySelector('#password-signup').value.trim();
 
     if (username && password) {
-        const response = await fetch('/auth/signup', {
+        const response = await fetch('/api/users/signup', {
             method: 'POST',
             body: JSON.stringify({ username, password }),
             headers: { 'Content-Type': 'application/json' },
         });
 
         if (response.ok) {
-            document.location.replace('/dashboard');
+            document.location.replace('/');
         } else {
-            alert(response.statusText);
+            alert('Failed to sign up.');
         }
     }
 };
 
 document
-    .getElementById('signup-form')
+    .querySelector('#signup-form')
     .addEventListener('submit', signupFormHandler);
+
+// const signupFormHandler = async (event) => {
+//     event.preventDefault();
+
+//     const username = document.querySelector('#username').value.trim();
+//     const password = document.querySelector('#password').value.trim();
+
+//     if (username && password) {
+//         const response = await fetch('/auth/signup', {
+//             method: 'POST',
+//             body: JSON.stringify({ username, password }),
+//             headers: { 'Content-Type': 'application/json' },
+//         });
+
+//         if (response.ok) {
+//             document.location.replace('/dashboard');
+//         } else {
+//             alert(response.statusText);
+//         }
+//     }
+// };
+
+// document
+//     .getElementById('signup-form')
+//     .addEventListener('submit', signupFormHandler);

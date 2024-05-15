@@ -1,26 +1,26 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.querySelector('.edit-post-form');
-    const postId = document.querySelector('input[name="post-id"]').value; 
+// document.addEventListener('DOMContentLoaded', function() {
+//     const form = document.querySelector('.edit-post-form');
+//     const postId = document.querySelector('input[name="post-id"]').value; 
 
-    form.addEventListener('submit', async function(event) {
-        event.preventDefault();
+//     form.addEventListener('submit', async function(event) {
+//         event.preventDefault();
 
-        const title = document.querySelector('input[name="title"]').value;
-        const content = document.querySelector('textarea[name="content"]').value;
+//         const title = document.querySelector('input[name="title"]').value;
+//         const content = document.querySelector('textarea[name="content"]').value;
 
-        const response = await fetch(`/api/posts/update/${postId}`, {
-            method: 'POST', 
-            body: JSON.stringify({ title, content }),
-            headers: { 'Content-Type': 'application/json' }
-        });
+//         const response = await fetch(`/api/posts/update/${postId}`, {
+//             method: 'POST', 
+//             body: JSON.stringify({ title, content }),
+//             headers: { 'Content-Type': 'application/json' }
+//         });
 
-        if (response.ok) {
-            document.location.replace('/dashboard');
-        } else {
-            alert(response.statusText);
-        }
-    });
-});
+//         if (response.ok) {
+//             document.location.replace('/dashboard');
+//         } else {
+//             alert(response.statusText);
+//         }
+//     });
+// });
 
 
 

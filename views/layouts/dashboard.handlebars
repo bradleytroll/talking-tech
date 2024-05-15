@@ -1,4 +1,16 @@
-<html lang="en">
+<h1>Dashboard</h1>
+
+{{#each posts}}
+    {{> post-preview}}
+{{/each}}
+
+<form id="post-form">
+    <input type="text" id="post-title" placeholder="Title" required>
+    <textarea id="post-content" placeholder="Content" required></textarea>
+    <button type="submit">Create Post</button>
+</form>
+
+{{!-- <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -48,4 +60,4 @@
 <script src='/js/logout.js'></script>
 
 
-
+ --}}

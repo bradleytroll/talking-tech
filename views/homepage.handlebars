@@ -1,4 +1,12 @@
 {{#each posts}}
+    <div class="post">
+        <h2>{{title}}</h2>
+        <p>By {{user.username}} on {{format_date createdAt}}</p>
+        <p>{{content}}</p>
+    </div>
+{{/each}}
+
+{{!-- {{#each posts}}
 
 {{title}}
 By {{user.username}} on {{createdAt}}
@@ -11,4 +19,4 @@ By {{user.username}} on {{createdAt}}
     <input type="text" name="username" placeholder="Username" required>
     <input type="password" name="password" placeholder="Password" required>
     <button type="submit">Login</button>
-</form>
+</form> --}}
