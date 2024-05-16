@@ -1,6 +1,6 @@
 <div class="post">
     <h2>{{title}}</h2>
-    <p>By {{user.username}} on {{format_date createdAt}}</p>
+    <p>by {{user.username}} on {{format_date createdAt}}</p>
     <p>{{content}}</p>
 
     <h4>Comments</h4>
@@ -15,6 +15,8 @@
                     <button class="edit-comment" data-id="{{id}}">Edit</button>
                     <button class="delete-comment" data-id="{{id}}">Delete</button>
                 {{/if}}
+                {{else}}
+                    <p><a href="/login">Log in to add a comment</a></p>
             {{/if}}
         </div>
     {{/each}}
@@ -23,8 +25,4 @@
             <button type="submit">Post Comment</button>
     </form>
 
-    <p>Logged in: {{logged_in}}</p>
-    <p>Logged in user ID: {{logged_in_user_id}}</p>
-
-   
 </div>
