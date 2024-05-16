@@ -1,7 +1,10 @@
 const router = require('express').Router();
 const { Post, User, Comment } = require('../models');
 
+// Homepage route
 router.get('/', async (req, res) => {
+    console.log('Session at start of homepage route:', req.session);
+
     try {
         const postData = await Post.findAll({
             include: [
@@ -29,8 +32,7 @@ router.get('/', async (req, res) => {
             logged_in_user_id: req.session.user_id
         };
 
-        console.log('Data context being passed to homepage:', context);
-        console.log('Session information:', req.session);
+        console.log('Data context passed to homepage:', context);
 
         res.render('homepage', context);
     } catch (err) {
@@ -38,7 +40,9 @@ router.get('/', async (req, res) => {
     }
 });
 
+// Login route
 router.get('/login', (req, res) => {
+    console.log('Rendering login page. Session:', req.session);
     if (req.session.logged_in) {
         res.redirect('/dashboard');
         return;
@@ -47,7 +51,9 @@ router.get('/login', (req, res) => {
     res.render('login');
 });
 
+// Signup route
 router.get('/signup', (req, res) => {
+    console.log('Rendering signup page. Session:', req.session);
     if (req.session.logged_in) {
         res.redirect('/dashboard');
         return;

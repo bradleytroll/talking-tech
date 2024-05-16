@@ -12,6 +12,8 @@ router.post('/signup', async (req, res) => {
             req.session.user_id = userData.id;
             req.session.logged_in = true;
 
+            console.log('Session after signup:', req.session);
+
             res.status(200).json(userData);
         });
     } catch (err) {
@@ -38,6 +40,8 @@ router.post('/login', async (req, res) => {
         req.session.save(() => {
             req.session.user_id = userData.id;
             req.session.logged_in = true;
+
+            console.log('Session after login:', req.session);
 
             res.json({ user: userData, message: 'You are now logged in!' });
         });

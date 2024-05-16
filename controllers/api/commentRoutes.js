@@ -17,19 +17,19 @@ router.post('/', withAuth, async (req, res) => {
 
 router.put('/:id', withAuth, async (req, res) => {
     try {
-        const commentData = await Comment.update(req.body, {
+        const comment = await Comment.update(req.body, {
             where: {
                 id: req.params.id,
                 user_id: req.session.user_id,
             },
         });
 
-        if (!commentData[0]) {
+        if (!comment) {
             res.status(404).json({ message: 'No comment found with this id!' });
             return;
         }
 
-        res.status(200).json(commentData);
+        res.status(200).json(comment);
     } catch (err) {
         res.status(500).json(err);
     }
@@ -37,19 +37,19 @@ router.put('/:id', withAuth, async (req, res) => {
 
 router.delete('/:id', withAuth, async (req, res) => {
     try {
-        const commentData = await Comment.destroy({
+        const comment = await Comment.destroy({
             where: {
                 id: req.params.id,
                 user_id: req.session.user_id,
             },
         });
 
-        if (!commentData) {
+        if (!comment) {
             res.status(404).json({ message: 'No comment found with this id!' });
             return;
         }
 
-        res.status(200).json(commentData);
+        res.status(200).json(comment);
     } catch (err) {
         res.status(500).json(err);
     }
