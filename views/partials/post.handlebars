@@ -1,14 +1,14 @@
 <div class="post">
-    <h2>{{title}}</h2>
-    <p>by {{user.username}} on {{format_date createdAt}}</p>
+    <h3>{{title}}</h3>
+    <small>by {{user.username}} on {{format_date createdAt}}</small>
     <p>{{content}}</p>
 
     <h4>Comments</h4>
     
     {{#each comments}}
         <div class="comment">
-            <h4>{{comment_text}}</h4>
-            <p>by {{user.username}} on {{format_date createdAt}}</p>
+            <p>{{comment_text}}</p>
+            <small>by {{user.username}} on {{format_date createdAt}}</small>
             
             {{#if ../logged_in}}
                 {{#if (eq user_id ../logged_in_user_id)}}

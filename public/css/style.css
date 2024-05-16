@@ -2,6 +2,11 @@ body {
     font-family: Arial, sans-serif;
 }
 
+.nav-bar {
+    background-color: bisque;
+    padding: 10px;
+}
+
 .post {
     margin-bottom: 20px;
 }
