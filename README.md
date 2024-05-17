@@ -1,4 +1,4 @@
-# Tech Blog Application
+# Tech Talk: A Tech Blog Application
 
 ## Table of Contents
 - [Description](#description)
@@ -89,7 +89,7 @@ Contributions are welcome! Please follow these steps:
 6. Open a pull request.
 
 ## GitHub Repo
-[GitHub Repository](<repository-url>)
+[GitHub Repository](https://github.com/bradleytroll/talking-tech)
 
 ## Deployed Application
 [Deployed Application](<deployed-url>)
