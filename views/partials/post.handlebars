@@ -1,31 +1,28 @@
 <div class="post">
-    <h3>{{title}}</h3>
-    <small>by {{user.username}} on {{format_date createdAt}}</small>
-    <p>{{content}}</p>
+  <h3>{{title}}</h3>
+  <small>by {{user.username}} on {{format_date createdAt}}</small>
+  <p>{{content}}</p>
 
-    <h4>*** Comments ***</h4>
-    
-    
+  <h4>*** Comments ***</h4>
+
+  <div class="comments-container">
     {{#each comments}}
-        <div class="comment">
-            <p>{{comment_text}}</p>
-            <small>by {{user.username}} on {{format_date createdAt}}</small>
-            
-            {{#if ../logged_in}}
-                {{#if (eq user_id ../logged_in_user_id)}}
-                    <button class="edit-comment" data-id="{{id}}">Edit</button>
-                    <button class="delete-comment" data-id="{{id}}">Delete</button>
-                {{/if}}
-                {{else}}
-                    
-                     
-            {{/if}}
-        </div>
+      <div class="comment">
+        <p>{{comment_text}}</p>
+        <small>by {{user.username}} on {{format_date createdAt}}</small>
+        {{#if../logged_in}}
+          {{#if (eq user_id../logged_in_user_id)}}
+            <button class="edit-comment" data-id="{{id}}">Edit</button>
+            <button class="delete-comment" data-id="{{id}}">Delete</button>
+          {{/if}}
+        {{/if}}
+      </div>
     {{/each}}
-            <form class="new-comment-form" data-post-id="{{id}}">
-            <textarea name="comment_text" placeholder="Add a comment" required></textarea>
-            <button type="submit">Post Comment</button>
-    </form>
-    <hr>
+  </div>
 
+  <form class="new-comment-form" data-post-id="{{id}}">
+    <textarea name="comment_text" placeholder="Add a comment" required></textarea>
+    <button type="submit">Post Comment</button>
+  </form>
+  <hr>
 </div>

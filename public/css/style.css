@@ -4,22 +4,98 @@ body {
     background-color: rgb(188, 219, 209);
 }
 
+.title-div {
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+  .title {
+    margin: 0 auto;
+  }
+
 .nav-bar {
-    background-color: bisque;
+    background-color: #aba7b8;
     padding: 10px;
    
 }
+
 .post {
+    background-color: #aba7b8;
+    padding: 16px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin-bottom: 16px;
+    width: 75%; 
+  }
+  
+  .comments-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-
-    flex: 0 1 24%; /* Adjust the width of each comment */
+  }
+  
+  .comment {
+    flex: 0 1 24%; 
     margin: 1rem 0.5em;
     box-sizing: border-box;
+    background-color: #e0e0e0;
+    padding: 16px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  }
+  
+  .new-comment-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .new-comment-form textarea {
+    flex: 1 1 25%;
+    margin-bottom: 16px;
+  }
+  
+  .new-comment-form button {
+    flex: 0 1 14%;
+    margin: 16px;
+    
+  }
+
+  #post-form {
     background-color: #f1f1f1;
     padding: 16px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin-bottom: 16px;
+    width: 50%; 
+  }
+  
+  #post-form h2 {
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  
+  #post-form input,
+  #post-form textarea {
+    display: block;
+    width: 100%;
+    margin-bottom: 16px;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  #post-form button {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  #post-form button:hover {
+    background-color: #45a049;
   }
 
 .nav-item {
