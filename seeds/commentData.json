@@ -1,21 +1,21 @@
 [
     {
-        "comment_text": "This is a comment on the first post.",
+        "comment_text": "Keep studying!",
         "user_id": 1,
         "post_id": 1
     },
     {
-        "comment_text": "This is another comment on the first post.",
+        "comment_text": "Following!",
         "user_id": 2,
         "post_id": 1
     },
     {
-        "comment_text": "This is a comment on the second post.",
+        "comment_text": "Good job!",
         "user_id": 1,
         "post_id": 2
     },
     {
-        "comment_text": "This is a comment on the third post.",
+        "comment_text": "I totally agree!",
         "user_id": 3,
         "post_id": 3
     }

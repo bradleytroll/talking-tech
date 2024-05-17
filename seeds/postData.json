@@ -1,17 +1,17 @@
 [
     {
-        "title": "First Post",
-        "content": "This is the content of the first post.",
+        "title": "Learning JavaScript",
+        "content": "What are your best tips for learning JavaScript?",
         "user_id": 1
     },
     {
-        "title": "Second Post",
-        "content": "This is the content of the second post.",
+        "title": "Handlebars",
+        "content": "I think I'm starting to understand handlebars!.",
         "user_id": 1
     },
     {
-        "title": "Third Post",
-        "content": "This is the content of the third post.",
+        "title": "CSS",
+        "content": "Why is CSS so difficult to me?",
         "user_id": 1
     }
 ]
