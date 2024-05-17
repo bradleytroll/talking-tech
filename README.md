@@ -92,4 +92,4 @@ Contributions are welcome! Please follow these steps:
 [GitHub Repository](https://github.com/bradleytroll/talking-tech)
 
 ## Deployed Application
-[Deployed Application](<deployed-url>)
+[Deployed Application](https://lit-scrubland-73672-42f874aa9410.herokuapp.com/)
